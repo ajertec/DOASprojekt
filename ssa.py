@@ -94,16 +94,16 @@ def ssa_2d(img, u, v, l, l_rec=None, verbose=False):
         print("Computing SVD ...")
     U, S, Vh = svd(np.dot(X, X.T))
 
-    if verbose:
-        plt.figure()
-        plt.subplot(121)
-        plt.semilogy(S)
-        plt.title("All Eigenvalues.")
-        plt.ylabel("log")
+    # if verbose:
+        # plt.figure()
+        # plt.subplot(121)
+        # plt.semilogy(S)
+        # plt.title("All Eigenvalues.")
+        # plt.ylabel("log")
 
-        plt.subplot(122)
-        plt.stem(S[1:l])
-        plt.title("First {} Eigenvalues (w/o 1.).".format(l))
+        # plt.subplot(122)
+        # plt.stem(S[1:l])
+        # plt.title("First {} Eigenvalues (w/o 1.).".format(l))
 
     # 3) selection of eigenvectors
     # 4) reconstruction of image
@@ -119,7 +119,7 @@ def ssa_2d(img, u, v, l, l_rec=None, verbose=False):
     return reconstruct_img(X_approx, params)
 
 
-@jit
+
 def compute_trajectory_matrix(img, params):
     u, v = params["u"], params["v"]
     h, w = img.shape
@@ -148,6 +148,6 @@ def reconstruct_img(X_approx, params):
     return img_approx/img_division
 
 
-@jit
+
 def svd(X):
     return np.linalg.svd(X)

@@ -52,7 +52,9 @@ def plot_reconstruct_eigenvectors_img(U, Vh, X, params, verbose):
         # plotting reconstructed eigenvecs
         a = fig.add_subplot(n, m, e+1)
         plt.imshow(img_approx/img_division, cmap = "gray")
-        a.set_title('l = {}'.format(e+1))
+        a.set_title('ev {}'.format(e+1))
+        a.axis("off")
+        plt.subplots_adjust(left=0, right=1, top=1, bottom=0, wspace=0, hspace=0)
 
     w_correlation_matrix = np.eye(l)
     if verbose == 3:
